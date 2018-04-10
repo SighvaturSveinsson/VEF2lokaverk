@@ -1,4 +1,4 @@
 # VEF2 Lokaverkefni.
 
 #### Verkefnalýsing.
-Ljósmyndasíða með upplýsingum um ljósmyndaran, nokkrar myndir til sýnis og contact info.
+Ljósmyndasíða með upplýsingum um ljósmyndaran, myndir til sýnis, contact info, contact form og admin login sem getur breytt texta á síðunni, uploadað myndum og fjarlægt myndir.
