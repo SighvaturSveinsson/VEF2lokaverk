@@ -1,1 +1,1 @@
-# VEF2lokaverk
+# VEF2 Lokaverkefni.
