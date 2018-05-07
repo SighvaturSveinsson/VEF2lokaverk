@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+<h1>Vef 2 lokaverkefni</h1>
+<div>
+<a href='/' class="button">Home</a>
+<a href='/myndir' class="button">Myndir</a>
+<a href='/contact' class="button">Contact info</a>
+<a href='/updates' class="button">Tilkynningar</a>
+</div>
+{% block content %} {% endblock %}
+
+<div>
+{% if current_user.is_anonymous %}
+<a href='/login'>Login</a>
+{% else %}
+<a href='/logout'>Logout</a>
+{% endif %}
+</div>
+
+</body>
+</html>

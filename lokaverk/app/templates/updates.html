@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if current_user.is_authenticated %}
+<h1>Post</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title(size=32) }}
+        </p>
+        <p>
+            {{ form.body.label }}<br>
+            {{ form.body(size=32) }}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endif %}
+
+{% for p in posts %}
+    {% if current_user.is_authenticated %}
+    <p>{{ p.id }}</p>
+    {% endif %}
+    <p>{{ p.title }}</p>
+    <p>{{ p.body }}</p>
+    <p>{{ p.date }}</p>
+{% endfor %}
+
+{% endblock %}
