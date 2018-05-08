@@ -1,7 +1,7 @@
 # VEF2 Lokaverkefni.
 
 #### Verkefnalýsing.
-Ljósmyndasíða með upplýsingum um ljósmyndaran á heimasíðu, myndir til sýnis, contact info og admin login sem getur breytt texta á síðunni, uploadað myndum og fjarlægt myndir og sett in blog post.
+Ljósmyndasíða með upplýsingum um ljósmyndaran á heimasíðu, myndir til sýnis, contact info og admin login sem getur breytt texta á síðunni, uploadað myndum og fjarlægt myndir og sett in, breytt og eytt blog postum/tilkynningum.
 
 Ætla að nota flask_login fyrir admin login, MySql (sqlAlchemy) database fyrir admin users, myndir, texta og blog posts.
 Ætla að hafa upplýsingar um ljósmyndaran á heimsíðu, galleries á myndir undirsíðu og contact info á einni undirsíðu.
