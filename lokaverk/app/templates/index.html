@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if current_user.is_authenticated %}
+    <p></p>
+    <a href='/breyta/1' class="button">Breyta</a>
+    {% endif %}
 <h1>About</h1>
 <div><p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra arcu eu ante elementum pharetra at sed augue.

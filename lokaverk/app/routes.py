@@ -38,7 +38,7 @@ def logout():
 @app.route('/myndir')
 def myndir():
     return render_template('myndir.html')
-'''
+
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
@@ -46,6 +46,7 @@ def upload():
         filename = photos.save(request.files['photo'])
         return filename
     return render_template('upload.html')
+'''
 
 @app.route('/contact')
 def contact():
@@ -56,3 +57,25 @@ def updates():
     form = BlogForm()
     posts = Post.query.all()
     return render_template('contact.html', form=form, posts=posts())
+
+@app.route('/breyta/<no:int>', methods=['GET', 'POST'])
+def breyta(no):
+    if no < 0:
+        return redirect('/index')
+    if current_user.is_anonymous:
+        return redirect('/index')
+    posts = Post.query.get(no)
+    return render_template('breyta.html',no=no,posts=posts)
+
+'''
+@app.route('/eyda/<no:int>')
+def eyda(no):
+    if no < 1:
+        return redirect('/index')
+    if current_user.is_anonymous:
+        return redirect('/index')
+    DeletePost = Post.query.get(no)
+    db.session.delete(DeletePost)
+    db.session.commit()
+    return redirect('/')
+'''

@@ -2,7 +2,6 @@
 
 {% block content %}
 
-{% if current_user.is_authenticated %}
 <h1>Post</h1>
     <form action="" method="post">
         {{ form.hidden_tag() }}
@@ -16,17 +15,5 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
-{% endif %}
-
-{% for p in posts %}
-    {% if current_user.is_authenticated %}
-    <p>{{ p.id }}</p>
-    <a href='/eyda/{{ p.id }}' class="button">Eyða</a>
-    <a href='/breyta/{{ p.id }}' class="button">Breyta</a>
-    {% endif %}
-    <p>{{ p.title }}</p>
-    <p>{{ p.body }}</p>
-    <p>{{ p.timestamp }}</p>
-{% endfor %}
 
 {% endblock %}
