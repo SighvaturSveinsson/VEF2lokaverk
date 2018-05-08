@@ -1,6 +1,6 @@
 from app.models import User
 from flask_login import current_user, login_user, logout_user
-from flask import Flask, render_template, redirect, flash
+from flask import Flask, render_template, redirect, flash, request
 from app.forms import LoginForm, BlogForm
 from app import app
 
@@ -40,6 +40,12 @@ def myndir():
     return render_template('myndir.html')
 '''
 
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST' and 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        return filename
+    return render_template('upload.html')
 
 @app.route('/contact')
 def contact():

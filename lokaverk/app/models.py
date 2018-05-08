@@ -19,6 +19,7 @@ def load_user(id):
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50))
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
@@ -30,6 +31,7 @@ class Myndir(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     link = db.Column(db.String(140))
     gallery_nr = db.Column(db.Integer(3))
+    #timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):
         return '<Myndir {}>'.format(self.body)

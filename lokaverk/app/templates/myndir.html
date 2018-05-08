@@ -18,15 +18,11 @@
     </form>
 {% endif %}
 
-{% for p in posts %}
+{% for m in myndir %}
     {% if current_user.is_authenticated %}
     <p>{{ p.id }}</p>
-    <a href='/' class="button">Eyða</a>
-    <a href='/' class="button">Breyta</a>
     {% endif %}
-    <p>{{ p.title }}</p>
-    <p>{{ p.body }}</p>
-    <p>{{ p.timestamp }}</p>
+    <p><img src="{{ m.link }}"</p>
 {% endfor %}
 
 {% endblock %}

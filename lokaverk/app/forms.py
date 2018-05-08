@@ -11,5 +11,4 @@ class LoginForm(FlaskForm):
 class BlogForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     body = TextAreaField('Body', validators=[DataRequired()])
-    #date = DateField('Date')
     submit = SubmitField('Post')
