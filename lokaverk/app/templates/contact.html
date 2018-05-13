@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="bottomBorder">Contact info</h1>
+
+{% for c in contact %}
+    {% if current_user.is_authenticated %}
+    <p><a href='/breyta/contact/{{ c.id }}' class="smallButton buttonHover">Breyta</a>
+    <a href='/eyda/contact/{{ c.id }}' class="smallButton buttonHover">Eyða</a></p>
+    ID: {{ c.id }}
+    {% endif %}
+    <h3>{{ c.title }}</h3>
+    <p class="bottomBorder">{{ c.body }}</p>
+{% endfor %}
+
+
+{% if current_user.is_authenticated %}
+<h1>Add contact way</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.type.label }}<br>
+            {{ form.type }}
+            {% for error in form.type.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.body.label }}<br>
+            {{ form.body(size=32) }}
+            {% for error in form.body.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endif %}
+{% endblock %}

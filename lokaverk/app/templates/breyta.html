@@ -1,19 +1,54 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="../../static/styles.css">
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h1>Vef 2 lokaverkefni</h1>
+<div>
+<a href='/' class="button buttonHover">Home</a>
+<a href='/myndir' class="button buttonHover">Myndir</a>
+<a href='/contact' class="button buttonHover">Contact info</a>
+<a href='/updates' class="button buttonHover">Tilkynningar</a>
+</div>
 
-{% block content %}
+{% if page == 'contact' %}
+<h1>Breyta Contact</h1>
+<form action="" method="post">
+    {{ form1.hidden_tag() }}
+    <p>
+        {{ form1.type.label }}<br>
+        {{ form1.type }}
+    </p>
+        {{ form1.body.label }}<br>
+        {{ form1.body(size=32) }}
+    <p>{{ form1.submit() }}</p>
+</form>
 
-<h1>Post</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.title.label }}<br>
-            {{ form.title(size=32) }}
-        </p>
-        <p>
-            {{ form.body.label }}<br>
-            {{ form.body(size=32) }}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+{% elif page == 'updates' %}
+<h1>Breyta Post</h1>
+<form action="" method="post">
+    {{ form2.hidden_tag() }}
+    <p>
+        {{ form2.title.label }}<br>
+        {{ form2.title(size=32) }}
+    </p>
+    <p>
+        {{ form2.body.label }}<br>
+        {{ form2.body(size=32) }}
+    </p>
+    <p>{{ form2.submit() }}</p>
+</form>
+{% endif %}
 
-{% endblock %}
+<div>
+{% if current_user.is_anonymous %}
+<a href='/login' class="buttonHover adminButton">WebAdmin Login</a>
+{% else %}
+<a href='/logout' class="buttonHover adminButton">Logout</a>
+{% endif %}
+</div>
+</body>
+</html>

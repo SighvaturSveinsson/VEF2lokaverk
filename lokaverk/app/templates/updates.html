@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<h1 class="bottomBorder">Tilkynningar</h1>
 {% if current_user.is_authenticated %}
 <h1>Post</h1>
     <form action="" method="post">
@@ -9,24 +9,34 @@
         <p>
             {{ form.title.label }}<br>
             {{ form.title(size=32) }}
+            {% for error in form.title.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>
             {{ form.body.label }}<br>
             {{ form.body(size=32) }}
+            {% for error in form.body.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>{{ form.submit() }}</p>
     </form>
 {% endif %}
 
-{% for p in posts %}
+{% for p in posts[::-1] %}
     {% if current_user.is_authenticated %}
-    <p>{{ p.id }}</p>
-    <a href='/eyda/{{ p.id }}' class="button">Eyða</a>
-    <a href='/breyta/{{ p.id }}' class="button">Breyta</a>
+        <p>POST ID: {{ p.id }}</p>
     {% endif %}
-    <p>{{ p.title }}</p>
+    <h2>{{ p.title }}
+        {% if current_user.is_authenticated %}
+        <a href='/breyta/updates/{{ p.id }}' class="smallButton">Breyta</a>
+        <a href='/eyda/updates/{{ p.id }}' class="smallButton">Eyða</a>
+        {% endif %}
+    </h2>
+
     <p>{{ p.body }}</p>
-    <p>{{ p.timestamp }}</p>
+    <p class="bottomBorder"> Dagsetning: {{ p.timestamp }}</p>
 {% endfor %}
 
 {% endblock %}

@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ title }}</title>
 </head>
 <body>
-
 {% with messages = get_flashed_messages() %}
     {% if messages %}
-        <ul>
             {% for message in messages %}
-            <li>{{ message }}</li>
+                {% if message[0] == 'T' %}
+                <h2><font color="green" class="blackOutline">{{ message[1:] }}</font></h2>
+                {% else %}
+                <h2><font color="red" class="blackOutline">{{ message }}</font></h2>
+                {% endif %}
             {% endfor %}
-        </ul>
     {% endif %}
 {% endwith %}
 <h1>Vef 2 lokaverkefni</h1>
 <div>
-<a href='/' class="button">Home</a>
-<a href='/myndir' class="button">Myndir</a>
-<a href='/contact' class="button">Contact info</a>
-<a href='/updates' class="button">Tilkynningar</a>
+<a href='/' class="button buttonHover">Heim</a>
+<a href='/myndir' class="button buttonHover">Myndir</a>
+<a href='/contact' class="button buttonHover">Contact info</a>
+<a href='/updates' class="button buttonHover">Tilkynningar</a>
 </div>
 {% block content %} {% endblock %}
 
 <div>
 {% if current_user.is_anonymous %}
-<a href='/login'>Login</a>
+<a href='/login' class="buttonHover adminButton">WebAdmin Login</a>
 {% else %}
-<a href='/logout'>Logout</a>
+<a href='/logout' class="buttonHover adminButton">Logout</a>
 {% endif %}
 </div>
 

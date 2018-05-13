@@ -1,28 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<h1>Myndir</h1>
 {% if current_user.is_authenticated %}
-<h1>Post</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.title.label }}<br>
-            {{ form.title(size=32) }}
-        </p>
-        <p>
-            {{ form.body.label }}<br>
-            {{ form.body(size=32) }}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+<h3>Upload image</h3>
+<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}" class="margin greyBorder">
+    <input type=file name=photo>
+    <input type="submit">
+</form>
 {% endif %}
 
 {% for m in myndir %}
     {% if current_user.is_authenticated %}
-    <p>{{ p.id }}</p>
+    <p>IMG ID: {{ m.id }}</p>
     {% endif %}
-    <p><img src="{{ m.link }}"</p>
+    <p><img class="margin" src="{{ m.link }}"></p>
+    {% if current_user.is_authenticated %}
+    <a href='/eyda/myndir/{{ m.id }}' class="smallButton">Eyða</a>
+    {% endif %}
+    <p class="bottomBorder"></p>
 {% endfor %}
+
 
 {% endblock %}
